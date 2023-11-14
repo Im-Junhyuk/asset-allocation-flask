@@ -20,23 +20,27 @@ AVAILABLE_TICKERS = {
 
 # MySQL 연결 설정
 DB_CONFIG = {
-    'host': 'localhost',
-    'user': 'root',
-    'passwd': 'sukjune990821!',
+    'host': 'stock-price-db.c02nncy7jyda.ap-northeast-2.rds.amazonaws.com',
+    'user': 'admin',
+    'passwd': 'password',
     'db': 'stock_db',
     'charset': 'utf8'
 }
 
 # SQLAlchemy 엔진 생성
-engine = create_engine(f"mysql+pymysql://{DB_CONFIG['user']}:{DB_CONFIG['passwd']}@{DB_CONFIG['host']}/{DB_CONFIG['db']}")
+engine = create_engine(f"mysql+pymysql://{DB_CONFIG['user']}:{DB_CONFIG['passwd']}@{DB_CONFIG['host']}"
+                       f"/{DB_CONFIG['db']}")
+
 
 @app.route('/')
 def index():
     return "Backtesting API!"
 
+
 @app.route('/backtest/static', methods=['POST'])
 def backtest_static():
     return backtest_static_logic(request.json)
+
 
 @app.route('/backtest/dynamic', methods=['POST'])
 def backtest_dynamic():
@@ -119,6 +123,7 @@ def backtest_dynamic():
         "graph": encoded_img
     })
 
+
 def backtest_static_logic(data):
     aaAssets = data.get('aaAssets', [])
     startDay = data.get('startDay')
@@ -192,6 +197,7 @@ def backtest_static_logic(data):
         "sharpe": result_static.stats['User_Defined']['daily_sharpe'].round(4),
         "graph": encoded_img
     })
+
 
 if __name__ == '__main__':
     app.run(debug=True)

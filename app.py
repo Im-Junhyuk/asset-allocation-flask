@@ -7,6 +7,7 @@ API_KEY = "SFHKOTAHS4UVVJEQ"
 
 app = Flask(__name__)
 
+
 def backtest(start_date, end_date, weights):
     ts = TimeSeries(key=API_KEY, output_format="pandas")
     spy_data, _ = ts.get_daily_adjusted('SPY', outputsize='full')
@@ -30,6 +31,7 @@ def backtest(start_date, end_date, weights):
 
     return {"total_return": total_return, "annualized_return": annualized_return}
 
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
@@ -43,6 +45,7 @@ def index():
         return render_template("results.html", results=results)
 
     return render_template("index.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
