@@ -23,7 +23,7 @@ DB_CONFIG = {
     'host': 'stock-price-db.c02nncy7jyda.ap-northeast-2.rds.amazonaws.com',
     'user': 'admin',
     'passwd': 'password',
-    'db': 'stock_db',
+    'db': 'stock',
     'charset': 'utf8'
 }
 
