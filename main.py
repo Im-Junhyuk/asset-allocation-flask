@@ -68,6 +68,7 @@ def backtest_dynamic():
 
     all_data = {}
     for ticker in tickers:
+        ticker = str(ticker).lower()
         df = pd.read_sql(f'select * from {ticker};', con=engine)
         df['Date'] = pd.to_datetime(df['Date'])  # 'Date' 컬럼을 datetime 타입으로 변환
         df = df.drop_duplicates(subset='Date', keep='last')  # 중복된 날짜 제거
