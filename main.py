@@ -156,6 +156,7 @@ def backtest_static_logic(data):
         df['Date'] = pd.to_datetime(df['Date'])  # 'Date' 컬럼을 datetime 타입으로 변환
         df = df.drop_duplicates(subset='Date', keep='last')  # 중복된 날짜 제거
         df.set_index('Date', inplace=True)  # 'Date' 컬럼을 인덱스로 설정
+        ticker = str(ticker).upper()
         all_data[ticker] = df
 
     price = pd.DataFrame(
