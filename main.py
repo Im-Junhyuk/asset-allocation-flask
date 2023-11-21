@@ -15,7 +15,7 @@ app = Flask(__name__)
 AVAILABLE_TICKERS = {
     'SPY', 'IEV', 'EWJ', 'EEM', 'TLT', 'IEF', 'IYR', 'RWX', 'GLD', 'DBC',
     'QQQ', 'VT', 'VEU', 'EFA', 'VWO', 'IWD', 'AGG', 'SHY', 'SHV', 'BIL',
-    'TIP', 'GSC', 'PDBC', 'VNQ', 'SCHH', 'REM'
+    'TIP', 'GSC', 'PDBC', 'VNQ', 'SCHH', 'REM', 'EDV', 'LTPZ'
 }
 
 # MySQL 연결 설정
@@ -195,7 +195,7 @@ def backtest_static_logic(data):
     plt.close(fig)
 
     return jsonify({
-        "returns": (result_static.stats['User_Defined']['daily_mean'] * 100).round(4),
+        "returns": (result_static.stats['User_Defined']['daily_mean']).round(4),
         "volatility": result_static.stats['User_Defined']['daily_vol'].round(4),
         "sharpe": result_static.stats['User_Defined']['daily_sharpe'].round(4),
         "graph": encoded_img
