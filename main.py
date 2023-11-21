@@ -13,9 +13,12 @@ app = Flask(__name__)
 
 # 사용자가 선택할 수 있는 ETF 티커들
 AVAILABLE_TICKERS = {
-    'SPY', 'IEV', 'EWJ', 'EEM', 'TLT', 'IEF', 'IYR', 'RWX', 'GLD', 'DBC',
-    'QQQ', 'VT', 'VEU', 'EFA', 'VWO', 'IWD', 'AGG', 'SHY', 'SHV', 'BIL',
-    'TIP', 'GSC', 'PDBC', 'VNQ', 'SCHH', 'REM', 'EDV', 'LTPZ'
+    "SPY", "QQQ","VT", "VEU", "EFA", "EEM", "VWO", "IWD", "IWF",
+    "IWM", "IWN", "IWO", "MTUM", "SCZ", "XLE", "XLB", "XLI", "XLY", "XLP", "XLV", "XLF",
+    "XLK", "XLU", "VGK", "EZU", "EWJ",
+    "IEF", "TLT", "TIP", "LQD", "HYG", "BNDX", "EMB", "BWX",
+    "GSC", "PDBC", "GLD", "VNQ", "IYR", "SCHH", "REM", "RWX",
+    "EDV", "LTPZ", "IEV", "DBC", "AGG", "SHY", "SHV", "BIL"
 }
 
 # MySQL 연결 설정
